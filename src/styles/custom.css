@@ -1,0 +1,39 @@
+.arrow-color{
+    color:black !important;
+    width: 50px;
+}
+
+.min-h-82{
+    min-width: 26rem /* 384px */;
+}
+
+.box-shadow{
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.466);
+}
+
+.box-shadow:hover{
+    text-shadow: 1px 1px 10px white;
+    font-weight: 600;
+    box-shadow: 1px 1px 20px black;
+}
+
+.arrow-btn{
+    min-width: 15px;
+}
+
+.arrow-btn.md{
+    min-width:20px;
+}
+
+.manga-image{
+     width:200px;
+}
+
+.banner-size{
+    width:625px;
+}
+
+.banner-style{
+    border-radius:25px;
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.486);
+}

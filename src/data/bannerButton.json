@@ -1,0 +1,12 @@
+[
+    {
+        "isForward":true,
+        "btnImage":"/images/arrowfor.svg",
+        "altText":"Prosseguir"
+    },
+    {
+        "isForward":false,
+        "btnImage":"/images/arrowback.svg",
+        "altText":"Retroceder"
+    }
+]

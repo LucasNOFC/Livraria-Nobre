@@ -1,0 +1,64 @@
+[
+    {
+        "id": 1,
+        "price": "R$38,25",
+        "tittle": "George Orwell",
+        "books": {
+            "book1":"A Revolução dos bichos",
+            "book2":"1984",
+            "book3":"Dentro da baleia e outros ensaios"
+        },
+        "imageURL": "/images/books/BoxGeorgeOrwel.png",
+        "txtcolor":"text-purple-600",
+        "bgcolor":"bg-purple-600",
+        "color":"shadow-purple-600"
+    },
+    {
+        "id": 2,
+        "price": "R$51,99",
+        "tittle": "Julio Verne",
+        "books": {
+            "book1":"Vinte mil léguas submarinas",
+            "book2":"A volta ao mundo em 80 dias",
+            "book3":"Viagem ao centro da terra",
+            "book4":"Cinco semanas em um balão",
+            "book5":"A Ilha misteriosa",
+            "book6":"Da terra à lua"
+        },
+        "imageURL": "/images/books/BoxJulioVerne.png",
+        "txtcolor":"text-amber-800",
+        "bgcolor":"bg-amber-800",
+        "color":"shadow-amber-800"
+
+    },
+    {
+        "id": 3,
+        "price": "R$40,99",
+        "tittle": "Estoicos",
+        "books": {
+            "book1":"365 Reflexões Estoicas",
+            "book2":"A Arte de viver",
+            "book3":"Meditações",
+            "book4":"Sobre a brevidade da vida"
+        },
+        "imageURL": "/images/books/BoxEstoica.png",
+        "txtcolor":"text-red-950",
+        "bgcolor":"bg-red-950",
+        "color":"shadow-red-950"
+    },
+    {
+        "id": 4,
+        "price": "R$43,70",
+        "tittle": "Católico",
+        "books": {
+            "book1":"O Peregrino",
+            "book2":"Imitação de Cristo",
+            "book3":"Ortodoxo",
+            "book4":"Confissões"
+        },
+        "imageURL": "/images/books/BoxCatolico.png",
+        "txtcolor":"text-rose-900",
+        "bgcolor":"bg-rose-900",
+        "color":"shadow-rose-950"
+    }
+]

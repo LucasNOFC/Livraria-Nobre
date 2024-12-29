@@ -1,0 +1,18 @@
+[
+    {
+        "id":1,
+        "pic":"/images/manga/manga1.jpg",
+        "bookName":"Mangá Attack on Titan Volume 1°",
+        "author":"Hajime Isayama",
+        "sinopse":"O mundo foi dominado por Titãs, os poucos sobreviventes viram sua civiliazação reduzidas a um território protegido por muralhas.",
+        "isHighlight":true
+    },
+    {
+        "id":2,
+        "pic":"/images/manga/manga2.jpg",
+        "bookName":"Mangá Attack on Titan Volume 2°",
+        "author":"Hajime Isayama",
+        "sinopse":"O gigante colossal quebrou a primeira linha de defesa da muralha, Mikasa e Eren são os unicos capazes de derrotar os gigantes.",
+        "isHighlight":false
+    }
+]

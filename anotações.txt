@@ -1,0 +1,8 @@
+Aqui vou deixar anotações pra mim no futuro sobre o projeto.
+
+
+agora é fazer os elementos da esquerda e da direita do banner.
+
+criar componente para Landpage x
+botao do banner 
+MiddleBannerComponent
