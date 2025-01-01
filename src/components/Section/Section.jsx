@@ -1,6 +1,7 @@
 import React from "react";
 import List from "../List/List";
 import Content from "../Content/Content";
+import { Link } from "react-router-dom";
 
 const Section = () => {
   return (
@@ -8,9 +9,10 @@ const Section = () => {
       <div className="flex flex-col md:gap-6 gap-8 p-3 md:w-3/6 w-5/6">
         <Content />
         <List />
-        <button className="bg-lime-600 w-64 p-4 text-white font-bold shadow-md shadow-black hover:bg-lime-700 hover:font-extrabold">
+        <Link className="bg-lime-600 w-64 p-4 text-white font-bold shadow-md shadow-black hover:bg-lime-700 hover:font-extrabold text-center decoration-transparent"
+        to="/exclusive-products">
           Venha descobrir!
-        </button>
+        </Link>
       </div>
       <div className="flex items-center justify-center p-3">
         <img
