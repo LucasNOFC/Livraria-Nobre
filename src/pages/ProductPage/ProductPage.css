@@ -1,0 +1,18 @@
+.container{
+    width: 100vw;
+    display: grid;
+    grid-template-areas:
+    "side-menu products-list";
+    grid-template-columns: 1fr 3fr;
+    gap:2rem;
+    padding: 5px;
+}
+
+.products-item{
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: auto auto auto;
+    padding: 15px;
+    gap:15px;
+}

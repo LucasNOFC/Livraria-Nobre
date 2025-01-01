@@ -1,8 +1,8 @@
 .card-product{
     background-color: white;
     padding: 5px;
-    width: 320px;
-    height:425px;
+    width: 250px;
+    height:350px;
     display: flex;
     flex-flow:column nowrap;
     align-items: center;
@@ -24,10 +24,10 @@
 }
 
 .image{
-    max-width:300px;
-    max-height:300px;
-    min-width:250px;
-    min-width:250px;
+    max-width:150px;
+    max-height:200px;
+    min-width:100px;
+    min-width:150px;
 }
 
 .image:hover{

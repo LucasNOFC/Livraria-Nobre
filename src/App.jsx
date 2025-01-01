@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Landpage from "./pages/Landpage";
 import ExclusivePage from "./pages/ExclusivePage";
-import ProductPage from "./pages/ProductPage";
+import ProductPage from "./pages/ProductPage/ProductPage";
 import "./styles/index.css";
 
 function App() {

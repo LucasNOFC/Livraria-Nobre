@@ -4,34 +4,44 @@
         "image":"/images/products/manga1.jpg",
         "tittle":"Ataque dos Titãs Vol. 4: Série Original",
         "Author":"Hajime Isayama",
-        "Price":"29.90"
+        "Price":"29.90",
+        "isNew":true,
+        "gender":"Ação"
     },
     {
         "id":"2",
         "image":"/images/products/manga2.jpg",
         "tittle":"Attack on Titan Vol. 33: Série Original",
         "Author":"Hajime Isayama",
-        "Price":"32.31"
+        "Price":"32.31",
+        "isNew":false,
+        "gender":"Terror"
     },
     {
         "id":"3",
         "image":"/images/products/manga3.jpg",
         "tittle":"Attack on Titan Vol. 3: Série Original",
         "Author":"Hajime Isayama",
-        "Price":"51.94"
+        "Price":"51.94",
+        "isNew":true,
+        "gender":"Ação"
     },
     {
         "id":"4",
         "image":"/images/products/manga4.jpg",
         "tittle":"Ataque dos Titãs Vol. 27: Série Original",
         "Author":"Hajime Isayama",
-        "Price":"24.52"
+        "Price":"24.52",
+        "isNew":false,
+        "gender":"Comédia"
     },
     {
         "id":"5",
         "image":"/images/products/manga5.jpg",
         "tittle":"Ataque dos Titãs Vol. 16: Série Original",
         "Author":"Hajime Isayama",
-        "Price":"24.52"
+        "Price":"24.52",
+        "isNew":true,
+        "gender":"Aventura"
     }
 ]

@@ -1,0 +1,16 @@
+.gender-box{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+
+label{
+    color:black;
+    font-size:18px;
+}
+
+input[type="checkbox"]{
+    width:30px;
+    height: 20px;
+    accent-color: lightgreen;
+}
