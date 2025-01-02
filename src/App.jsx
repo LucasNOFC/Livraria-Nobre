@@ -10,7 +10,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div>
+    <div className="main">
       <Header />
       <Routes>
         <Route path="/" element={<Landpage />} />

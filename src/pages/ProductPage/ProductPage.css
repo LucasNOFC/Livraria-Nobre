@@ -1,5 +1,4 @@
 .container{
-    width: 100vw;
     display: grid;
     grid-template-areas:
     "side-menu products-list";

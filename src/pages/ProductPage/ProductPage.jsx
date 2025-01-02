@@ -1,7 +1,7 @@
 import React from "react";
 import "./ProductPage.css";
 import Product from "../../components/Product/Product";
-import products from "../../data/products.json";
+import productsJson from "../../data/products.json";
 import SideMenu from "../../components/SideMenur/SideMenu";
 
 const ProductPage = () => {
@@ -12,7 +12,7 @@ const ProductPage = () => {
       </div>
       <div className="products-list">
         <div className="products-item">
-          {products.map((item) => {
+          {productsJson.map((item) => {
             return <Product product={item} key={item.id} />;
           })}
         </div>
