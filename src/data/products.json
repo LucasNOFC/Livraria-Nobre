@@ -6,7 +6,10 @@
     "Author": "Hajime Isayama",
     "Price": "29.90",
     "isNew": true,
-    "gender": "Ação"
+    "type":{
+      "genderName": "Ação",
+      "ageRestriction": false
+    }
   },
   {
     "id": "2",
@@ -15,7 +18,10 @@
     "Author": "Hajime Isayama",
     "Price": "32.31",
     "isNew": false,
-    "gender": "Terror"
+    "type":{
+      "genderName": "Comédia",
+      "ageRestriction": false
+    }
   },
   {
     "id": "3",
@@ -24,7 +30,10 @@
     "Author": "Hajime Isayama",
     "Price": "51.94",
     "isNew": true,
-    "gender": "Ação"
+    "type":{
+      "genderName": "Terror",
+      "ageRestriction": false
+    }
   },
   {
     "id": "4",
@@ -33,7 +42,10 @@
     "Author": "Hajime Isayama",
     "Price": "24.52",
     "isNew": false,
-    "gender": "Comédia"
+    "type":{
+      "genderName": "Romance",
+      "ageRestriction": false
+    }
   },
   {
     "id": "5",
@@ -42,33 +54,9 @@
     "Author": "Hajime Isayama",
     "Price": "24.52",
     "isNew": true,
-    "gender": "Aventura"
-  },
-  {
-    "id": "5",
-    "image": "/images/products/manga5.jpg",
-    "tittle": "Ataque dos Titãs Vol. 16: Série Original",
-    "Author": "Hajime Isayama",
-    "Price": "24.52",
-    "isNew": true,
-    "gender": "Aventura"
-  },
-  {
-    "id": "5",
-    "image": "/images/products/manga5.jpg",
-    "tittle": "Ataque dos Titãs Vol. 16: Série Original",
-    "Author": "Hajime Isayama",
-    "Price": "24.52",
-    "isNew": true,
-    "gender": "Aventura"
-  },
-  {
-    "id": "5",
-    "image": "/images/products/manga5.jpg",
-    "tittle": "Ataque dos Titãs Vol. 16: Série Original",
-    "Author": "Hajime Isayama",
-    "Price": "24.52",
-    "isNew": true,
-    "gender": "Aventura"
+    "type":{
+      "genderName": "Terror",
+      "ageRestriction": false
+    }
   }
 ]

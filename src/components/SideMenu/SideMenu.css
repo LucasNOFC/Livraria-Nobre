@@ -17,3 +17,17 @@
     border-radius:8px;
     box-shadow:1px 1px 5px rgba(78, 78, 78, 0.301);
 }
+
+@media (max-width: 780px) {
+    .filter-container{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column nowrap;
+    }
+
+    .filter-options{
+        display: flex;
+    }
+}
