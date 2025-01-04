@@ -1,17 +1,17 @@
 import React from 'react'
-import bannerItems from "../../data/bannerItems.json";
+import product from "../../data/products.json";
 
 const BannerBtn = ({btnData, setIndex, index}) => {
 
   const handleBannerBackward = () => {
-    if (index === 0) setIndex(bannerItems.length - 1);
+    if (index === 0) setIndex(product.length - 1);
     else {
       setIndex((prev) => prev - 1);
     }
   };
   
   const handleBannerForward = () => {
-    if (index === bannerItems.length - 1) setIndex(0);
+    if (index === product.length - 1) setIndex(0);
     else {
       setIndex((prev) => prev + 1);
     }

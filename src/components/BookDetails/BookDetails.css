@@ -1,0 +1,12 @@
+.book-container{
+    width: 100%;
+}
+
+.book-image-container{
+    width: 50%;
+}
+
+.book-info-container{
+    width: 80%;
+    align-items: center;
+}

@@ -1,27 +1,21 @@
-import {React, useState} from "react";
+import React from "react";
+import { useLocation } from "react-router-dom";
 import "./ProductPage.css";
-import Product from "../../components/Product/Product";
-import productsJson from "../../data/products.json";
-import SideMenu from "../../components/SideMenu/SideMenu";
-
-
+import SelectedProduct from "../../components/SelectedProduct/SelectedProduct";
 
 const ProductPage = () => {
-  const [filterProducts, setFilteredProducts] = useState(productsJson)
-
+  const location = useLocation();
+  const {tittle, Author, Price, image, path} = location.state;
 
   return (
-    <div className="container">
-      <div className="side-menu">
-        <SideMenu setFilteredProducts={setFilteredProducts}/>
-      </div>
-      <div className="products-list">
-        <div className="products-item">
-          {filterProducts.map((item) => {
-            return <Product product={item} key={item.id} />;
-          })}
-        </div>
-      </div>
+    <div className="w-full h-screen flex items-center justify-center">
+      <SelectedProduct
+        tittle={tittle}
+        author={Author}
+        price={Price}
+        image={image}
+        path={path}
+      />
     </div>
   );
 };

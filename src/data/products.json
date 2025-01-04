@@ -1,6 +1,6 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "image": "/images/products/manga1.jpg",
     "tittle": "Ataque dos Titãs Vol. 4: Série Original",
     "Author": "Hajime Isayama",
@@ -12,7 +12,7 @@
     }
   },
   {
-    "id": "2",
+    "id": 2,
     "image": "/images/products/manga2.jpg",
     "tittle": "Attack on Titan Vol. 33: Série Original",
     "Author": "Hajime Isayama",
@@ -24,7 +24,7 @@
     }
   },
   {
-    "id": "3",
+    "id": 3,
     "image": "/images/products/manga3.jpg",
     "tittle": "Attack on Titan Vol. 3: Série Original",
     "Author": "Hajime Isayama",
@@ -36,7 +36,7 @@
     }
   },
   {
-    "id": "4",
+    "id": 4,
     "image": "/images/products/manga4.jpg",
     "tittle": "Ataque dos Titãs Vol. 27: Série Original",
     "Author": "Hajime Isayama",
@@ -48,7 +48,7 @@
     }
   },
   {
-    "id": "5",
+    "id": 5,
     "image": "/images/products/manga5.jpg",
     "tittle": "Ataque dos Titãs Vol. 16: Série Original",
     "Author": "Hajime Isayama",

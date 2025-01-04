@@ -1,9 +1,9 @@
 import React from "react";
 import "./Product.css";
 
-const Product = ({ product }) => {
+const Product = ({ product, onClick }) => {
   return (
-    <div className="card-product">
+    <div className="card-product" onClick={onClick}>
       <div className="product-image">
         <img src={product.image} className="image" alt={product.tittle} />
       </div>
