@@ -9,8 +9,8 @@ const Header = () => {
             <h1 className='text-white hover:text-gray-400'><Link to={"/"}>LIVRARIA NOBRE</Link></h1>
             <div className>
               <ol className='md:flex hidden gap-10'>
-                <li className='pr-2 pl-2  hover:text-gray-400'><Link to={"/products"}>LIVROS</Link></li>
-                <li className='pr-2 pl-2  hover:text-gray-400'><Link to={"/products"}>MANGÁ</Link></li>
+                <li className='pr-2 pl-2  hover:text-gray-400'><Link to={"/products/books"}>LIVROS</Link></li>
+                <li className='pr-2 pl-2  hover:text-gray-400'><Link to={"/products/mangas"}>MANGÁ</Link></li>
                 <li className='pr-2 pl-2  hover:text-gray-400'><Link to={"/exclusive-products"}>EXCLUSIVOS</Link></li>
                 <li className='pr-2 pl-2  hover:text-gray-400'><Link to={"/about"}>SOBRE NÓS</Link></li>
               </ol>

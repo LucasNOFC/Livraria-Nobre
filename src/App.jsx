@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landpage />} />
         <Route path="/exclusive-products" element={<ExclusivePage />} />
-        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/products/:type" element={<ProductsPage />} />
         <Route path="/product-page/:id" element={<ProductPage />} />
       </Routes>
     </div>
