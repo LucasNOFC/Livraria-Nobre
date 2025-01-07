@@ -14,7 +14,7 @@ const BookProducts = () => {
     navigate(`/product-page/${product.id}`, {
       state: {
         ...product,
-        path: "/products",
+        path: "/products/books",
       },
     });
   };

@@ -1,0 +1,17 @@
+.footer-container{
+    padding: 8px;
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-container > div {
+    width: 50%;
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:25px;
+}

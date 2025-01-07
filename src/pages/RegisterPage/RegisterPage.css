@@ -1,0 +1,59 @@
+.register-form{
+    display: flex;
+    align-items: center;
+    flex-flow: column nowrap;
+    justify-content: center;
+    padding: 15px;
+    gap:15px;
+    width: 300px;
+    border-radius:15px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.4);
+}
+
+.register-tittle{
+    font-size:26px;
+    color:rgb(49, 49, 49);
+}
+
+.register-input{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    gap:8px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="text"], input[type="email"], input[type="date"],
+input[type="number"], input[type="password"] {
+    background-color: rgb(255, 255, 255);
+    padding: 6px;
+    width: 250px;
+    border:1px solid rgb(139, 139, 139);
+    border-radius: 5px;
+}
+
+.submit-input{
+    background-color: rgb(58, 101, 240);
+    padding: 5px;
+    color:white;
+    border: 1px solid rgba(0, 0, 0, 0.411);
+    border-radius:5px;
+    cursor: pointer;
+}
+
+.submit-input:hover{
+    background-color: rgb(32, 56, 133);
+}
+
+.register-havecount{
+    color:rgb(58, 101, 240);
+}
+
+.register-havecount:hover{
+    color:rgb(32, 56, 133);
+}

@@ -1,0 +1,21 @@
+.header-menu-options{
+    position: absolute;
+    padding: 15px;
+    background-color: black;
+    right:0px;
+    top:60px;
+    border-radius:0 0 0 6px;
+    box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.74);
+}
+
+.hide{
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
+.header-link-options{
+    color:white;
+}
