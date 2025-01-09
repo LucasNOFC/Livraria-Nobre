@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { axios } from "axios";
 import "./RegisterFields.css";
 
 const RegisterFields = () => {
@@ -16,14 +17,9 @@ const RegisterFields = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const response = await fetch('');
-  }
 
   return (
-    <form>
+    <form onSubmit={''}>
       <div className="register-form">
         <h1 className="register-tittle">Registro</h1>
         <div className="register-input">
