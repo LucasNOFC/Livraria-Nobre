@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import "./RegisterFields.css";
+
+const API_URL = "http://localhost:5100";
 
 const RegisterFields = () => {
   const [formData, setFormData] = useState({
@@ -16,9 +19,21 @@ const RegisterFields = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/`)
+      .then((response) => {
+        setMessage(response.data.message);
+      })
+      .catch((error) => {
+        console.error("Erro ao obter a mensagem:", error);
+      });
+  }, []);
 
   return (
-    <form onSubmit={''}>
+    <form onSubmit={""}>
       <div className="register-form">
         <h1 className="register-tittle">Registro</h1>
         <div className="register-input">
