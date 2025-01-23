@@ -20,7 +20,6 @@ const LoginFields = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    removeParamsFromUrl();
 
     if (!formData.email || !formData.password) {
       setError("Email e senha são obrigatórios.");
@@ -37,25 +36,18 @@ const LoginFields = () => {
           "Erro ao tentar logar. Tente novamente."
       );
     }
-
-  };
-
-  const removeParamsFromUrl = () => {
-    const url = new URL(window.location);
-    url.search = "";
-    navigate(url.toString(), { replace: true });
   };
 
   useEffect(() => {
     api
       .get("/")
       .then((response) => {
-        setMessage(response.data.message || "Bem-vindo!");
+        setMessage(response.data.message || "Insira seus dados para acessar");
       })
       .catch(() => {
         setMessage("Erro ao conectar ao servidor.");
       });
-  });
+  }, []);
 
   return (
     <form onSubmit={handleSubmit}>

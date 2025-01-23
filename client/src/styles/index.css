@@ -16,3 +16,8 @@
     width: 100%;
     height: 100vh;
 }
+
+.error-message{
+    color:red;
+    font-weight: 600;
+}

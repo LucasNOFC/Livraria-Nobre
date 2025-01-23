@@ -4,9 +4,9 @@ import LoginFields from "./components/LoginFields/LoginFields";
 
 const LoginPage = () => {
   return (
-    <form>
+    <div>
       <LoginFields />
-    </form>
+    </div>
   );
 };
 

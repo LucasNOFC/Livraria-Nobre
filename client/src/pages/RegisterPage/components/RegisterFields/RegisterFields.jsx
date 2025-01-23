@@ -40,7 +40,7 @@ const RegisterFields = () => {
     api
       .get("/")
       .then((response) => {
-        setMessage(response.data.message || "Bem-vindo!");
+        setMessage(response.data.message || "");
       })
       .catch(() => {
         setMessage("Erro ao conectar ao servidor.");
