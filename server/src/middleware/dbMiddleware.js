@@ -1,25 +1,20 @@
-import { MongoClient } from "mongodb";
-import dotenv from "dotenv";
+import pool from "../database/dbConfig.js";
 
-dotenv.config();
-
-const url = process.env.MONGO_URI;
-const dbName = process.env.DB_NAME;
-
-const client = new MongoClient(url);
-
-export const databaseMiddleware = async (req, res, next) => {
-  try {
-    if (!client.isConnected) {
-      await client.connect();
-      console.log("Conexão com o MongoDB estabelecida.");
+export const databaseMiddleware = (req, res, next) => {
+  pool.getConnection((err, connection) => {
+    if (err) {
+      console.log("Erro ao se conectar ao Banco:", err.message);
+      return res
+        .status(500)
+        .json({ message: "Erro ao se conectar ao banco de dados." });
     }
 
-    req.db = client.db(dbName);
+    req.db = connection;
+
+    res.on("finish", () => {
+      connection.release();
+    });
 
     next();
-  } catch (error) {
-    console.error("Erro ao conectar ao MongoDB:", error.message);
-    res.status(500).json({ message: "Erro ao conectar ao banco de dados." });
-  }
+  });
 };
