@@ -31,8 +31,9 @@ const RegisterFields = () => {
       const response = await api.post("/register", formData);
       setMessage(response.data.message);
       setError("");
-    } catch {
-      setError("Erro ao registrar. por favor, tente novamente.");
+    } catch (error) {
+      console.log(error);
+      setError(error.response?.data?.message || "Erro ao cadastrar.");
     }
   };
 
@@ -98,7 +99,7 @@ const RegisterFields = () => {
           />
           <input type="submit" className="submit-input" />
         </div>
-        
+
         <p>
           Já possui uma conta?{" "}
           <Link to={"/login"} className="register-havecount">

@@ -12,6 +12,7 @@ const LoginFields = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -41,9 +42,6 @@ const LoginFields = () => {
   useEffect(() => {
     api
       .get("/")
-      .then((response) => {
-        setMessage(response.data.message || "Insira seus dados para acessar");
-      })
       .catch(() => {
         setMessage("Erro ao conectar ao servidor.");
       });
