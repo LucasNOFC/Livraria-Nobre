@@ -1,0 +1,13 @@
+.name-container{
+    display: flex;
+    flex-flow: row nowrap;
+    gap:5px;
+}
+
+.name-handler{
+    cursor: pointer;
+}
+
+.name-handler:hover{
+    color:lightgray;
+}

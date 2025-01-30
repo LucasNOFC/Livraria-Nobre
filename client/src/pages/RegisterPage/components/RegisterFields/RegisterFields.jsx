@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./RegisterFields.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../../../../api/api";
 
 const RegisterFields = () => {
@@ -11,6 +11,8 @@ const RegisterFields = () => {
     password: "",
     confirmPassword: "",
   });
+
+  const navigate = useNavigate();
 
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -35,6 +37,8 @@ const RegisterFields = () => {
       console.log(error);
       setError(error.response?.data?.message || "Erro ao cadastrar.");
     }
+
+    navigate("/login", { replace: true, state: {message: "Prossiga para o login."} });
   };
 
   useEffect(() => {

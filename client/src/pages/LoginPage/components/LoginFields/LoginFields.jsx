@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../../RegisterPage/components/RegisterFields/RegisterFields.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import api from "../../../../api/api";
 
 const LoginFields = () => {
@@ -9,11 +9,13 @@ const LoginFields = () => {
     password: "",
   });
 
-  const [message, setMessage] = useState("");
+  const location = useLocation();
+  const messageCreated = location.state?.message;
+
+  const [message, setMessage] = useState();
   const [error, setError] = useState("");
 
-
-  const navigate = useNavigate();
+  let navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,6 +32,8 @@ const LoginFields = () => {
     try {
       const response = await api.post("/login", formData);
       setMessage(response.data.message);
+      const tokenAuth = response.data.token;
+      localStorage.setItem("authToken", tokenAuth);
       setError("");
     } catch (error) {
       setError(
@@ -37,14 +41,14 @@ const LoginFields = () => {
           "Erro ao tentar logar. Tente novamente."
       );
     }
+
+    navigate("/", { replace: true });
   };
 
   useEffect(() => {
-    api
-      .get("/")
-      .catch(() => {
-        setMessage("Erro ao conectar ao servidor.");
-      });
+    api.get("/").catch(() => {
+      setMessage("Erro ao conectar ao servidor.");
+    });
   }, []);
 
   return (
@@ -54,6 +58,9 @@ const LoginFields = () => {
 
         {error && <p className="error-message">{error}</p>}
         {message && <p className="success-message">{message}</p>}
+        {!message
+          ? messageCreated && <p className="sucess-message">{messageCreated}</p>
+          : ""}
 
         <div className="register-input">
           <input

@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+
 import Header from "./components/Header/Header";
 import Landpage from "./pages/Landpage";
 import ExclusivePage from "./pages/ExclusivePage";
@@ -11,6 +12,8 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 function App() {
+
+
   return (
     <div className="main">
       <Header />

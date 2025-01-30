@@ -2,8 +2,10 @@ import express from "express";
 import { Session } from "express-session";
 import { databaseMiddleware } from "./src/middleware/dbMiddleware.js";
 import { router } from "./src/routes/routes.js";
+import { dbRoutes } from "./src/routes/dbRoutes.js";
 import cors from "cors";
 import dotenv from "dotenv";
+import { authToken } from "./src/middleware/authMiddleware.js";
 
 const app = express();
 dotenv.config();
@@ -14,11 +16,11 @@ app.use(
     allowedHeaders: ["Content-Type"],
   })
 );
-app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
 app.use(databaseMiddleware);
-app.use("/", router);
 
+app.use("/", dbRoutes);
+app.use("/", router);
 const PORT = 5100;
 
 app.listen(PORT, () => {

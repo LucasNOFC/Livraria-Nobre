@@ -2,13 +2,24 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 import HeaderOptions from "../HeaderOptions/HeaderOptions";
+import UserLogged from "../UserLogged/UserLogged";
+import { jwtDecode } from "jwt-decode";
 
 const Header = () => {
   const [headerOptions, setHeaderOptions] = useState(false);
+  const [decodedToken, setDecodedToken] = useState(false);
 
   const handleHeader = (headerOptions) => {
     headerOptions ? setHeaderOptions(false) : setHeaderOptions(true);
   };
+
+  const token = localStorage.getItem("authToken");
+
+  useEffect(() => {
+    if (token) {
+      setDecodedToken(jwtDecode(token));
+    }
+  }, [token]);
 
   const location = useLocation();
 
@@ -38,13 +49,22 @@ const Header = () => {
             </li>
           </ol>
         </div>
-        <img
-          src="../../public/images/user.svg"
-          className="size-8 menu-header"
-          alt="handle user"
-          onClick={() => handleHeader(headerOptions)}
-        />
-        <HeaderOptions activeMenu={headerOptions} />
+        {!token ? (
+          <div>
+            <img
+              src="../../public/images/user.svg"
+              className="size-8 menu-header"
+              alt="handle user"
+              onClick={() => handleHeader(headerOptions)}
+            />
+            <HeaderOptions activeMenu={headerOptions} />
+          </div>
+        ) : (
+          <div>
+            {console.log(decodedToken)}
+            <UserLogged username={decodedToken.username} />
+          </div>
+        )}
       </div>
     </div>
   );
