@@ -34,6 +34,8 @@ const LoginFields = () => {
       setMessage(response.data.message);
       const tokenAuth = response.data.token;
       localStorage.setItem("authToken", tokenAuth);
+      navigate("/", { replace: true });
+      window.location.reload();
       setError("");
     } catch (error) {
       setError(
@@ -42,7 +44,7 @@ const LoginFields = () => {
       );
     }
 
-    navigate("/", { replace: true });
+    
   };
 
   useEffect(() => {

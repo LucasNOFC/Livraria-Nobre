@@ -1,6 +1,7 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 const { sign } = jwt;
+import { v4 as uuidv4} from "uuid";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 
@@ -10,8 +11,8 @@ const dbRoutes = express.Router();
 
 dbRoutes.post("/register", async (req, res) => {
   const sql =
-    "INSERT INTO tbUser (firstName, lastName, email, passCode, typeUser) VALUES (?, ?, ?, ?, 'Buyer')";
-  const { firstName, lastName, email, password } = req.body;
+    "INSERT INTO tbUser (firstName, lastName, email, passCode,id, typeUser) VALUES (?, ?, ?, ?,?, 'Buyer')";
+  const { firstName, lastName, email, password} = req.body;
 
   if (!firstName || !lastName || !email || !password) {
     return res
@@ -21,10 +22,10 @@ dbRoutes.post("/register", async (req, res) => {
 
   try {
     const hashPassword = await bcrypt.hash(password, 10);
-
+    const id = uuidv4();
     req.db.query(
       sql,
-      [firstName, lastName, email, hashPassword],
+      [firstName, lastName, email, hashPassword, id],
       (err, result) => {
         if (err) {
           console.error("Erro ao inserir dados:", err);
@@ -44,8 +45,6 @@ dbRoutes.post("/register", async (req, res) => {
 dbRoutes.post("/login", async (req, res) => {
   const sql = "SELECT id, passCode, firstName from tbUser where email = ?";
   const { email, password } = req.body;
-
-  console.log(req.body);
 
   if (!email || !password) {
     return res.status(400).json({ message: "Email e senha são obrigatórios" });
@@ -82,9 +81,5 @@ dbRoutes.post("/login", async (req, res) => {
     res.status(500).json({ message: "Error" });
   }
 });
-
-dbRoutes.post('/registeredLogin', async (req, res) => {
-  console.log(req.body);
-})
 
 export { dbRoutes };

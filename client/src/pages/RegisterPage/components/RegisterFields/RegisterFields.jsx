@@ -3,6 +3,7 @@ import "./RegisterFields.css";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../../../api/api";
 
+
 const RegisterFields = () => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -10,6 +11,7 @@ const RegisterFields = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    id: ""
   });
 
   const navigate = useNavigate();

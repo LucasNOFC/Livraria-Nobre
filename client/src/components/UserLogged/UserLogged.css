@@ -11,3 +11,11 @@
 .name-handler:hover{
     color:lightgray;
 }
+
+.options-list{
+    position: absolute;
+    top:50px;
+    right: 0;
+    padding: 8px;
+    background-color: black;
+}

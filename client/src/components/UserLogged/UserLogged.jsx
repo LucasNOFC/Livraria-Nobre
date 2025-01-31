@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./UserLogged.css";
-import { replace, useNavigate } from "react-router-dom";
+import ProfileContainer from "../ProfileContainer/ProfileContainer";
 
-const UserLogged = ({ username }) => {
-  const navigate = useNavigate();
-  const logout = () => {
-    localStorage.removeItem("authToken");
-    navigate("/", { replace: true });
+const UserLogged = ({ username, userID }) => {
+  const [turn, setTurn] = useState(false);
+
+  const turnOn = () => {
+    if (!turn) setTurn(true);
+    else setTurn(false);
   };
 
   return (
     <div className="name-container">
       <h2>Bem vindo:</h2>
-      <span className="name-handler" onClick={logout}>
+      <span className="name-handler" onClick={turnOn}>
         {username}
       </span>
+      {turn ? <div className="options-list">
+        <ProfileContainer userID={userID} />
+      </div> : ''}
     </div>
   );
 };

@@ -1,5 +1,5 @@
-import { Routes, Route } from "react-router-dom";
-
+import { Routes, Route, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Header from "./components/Header/Header";
 import Landpage from "./pages/Landpage";
 import ExclusivePage from "./pages/ExclusivePage";
@@ -9,14 +9,24 @@ import ProductPage from "./pages/ProductPage/ProductPage";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import Footer from "./components/Footer/Footer";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import { jwtDecode } from "jwt-decode";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 function App() {
-
-
+  const [decodedToken, setDecodedToken] = useState(false);
+  
+  const token = localStorage.getItem("authToken");
+  
+  useEffect(() => {
+    if (token) {
+      setDecodedToken(jwtDecode(token));
+    }
+  }, [token]);
+  
   return (
     <div className="main">
-      <Header />
+      <Header token={token} username={decodedToken.username} userID={decodedToken.userID} />
       <Routes>
         <Route path="/" element={<Landpage />} />
         <Route path="/exclusive-products" element={<ExclusivePage />} />
@@ -25,6 +35,11 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        {token ? (
+          <Route path="/profile-page/:id" element={<ProfilePage username={decodedToken.username}/>} />
+        ) : (
+          ""
+        )}
       </Routes>
       <Footer />
     </div>

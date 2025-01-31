@@ -3,23 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 import HeaderOptions from "../HeaderOptions/HeaderOptions";
 import UserLogged from "../UserLogged/UserLogged";
-import { jwtDecode } from "jwt-decode";
 
-const Header = () => {
+const Header = ({token, username, userID }) => {
   const [headerOptions, setHeaderOptions] = useState(false);
-  const [decodedToken, setDecodedToken] = useState(false);
 
   const handleHeader = (headerOptions) => {
     headerOptions ? setHeaderOptions(false) : setHeaderOptions(true);
   };
-
-  const token = localStorage.getItem("authToken");
-
-  useEffect(() => {
-    if (token) {
-      setDecodedToken(jwtDecode(token));
-    }
-  }, [token]);
 
   const location = useLocation();
 
@@ -61,8 +51,7 @@ const Header = () => {
           </div>
         ) : (
           <div>
-            {console.log(decodedToken)}
-            <UserLogged username={decodedToken.username} />
+            <UserLogged username={username} userID={userID} />
           </div>
         )}
       </div>
