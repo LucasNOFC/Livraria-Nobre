@@ -7,7 +7,7 @@ const ProfileContainer = ({ userID }) => {
   const navigate = useNavigate();
 
   const logout = () => {
-    localStorage.removeItem("authToken");
+    localStorage.removeItem("user");
     window.location.reload();
     navigate("/", { replace: true });
   };

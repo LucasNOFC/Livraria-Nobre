@@ -6,7 +6,7 @@ import SideMenu from "./components/SideMenu/SideMenu";
 import MainActivites from "./components/MainActivites/MainActivites";
 import axios from "axios";
 
-const ProfilePage = ({ username, userID }) => {
+const ProfilePage = ( {data} ) => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(null);
@@ -14,32 +14,7 @@ const ProfilePage = ({ username, userID }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setAuth(false);
-    setError(null);
-
-    if (!id) {
-      setError("ID inválido.");
-      return;
-    }
-
-    const verifyAuth = async () => {
-      try {
-        const response = await api.post("/verify", { id });
-        if (response.status === 200) {
-          setAuth(true);
-        } else {
-          setError("ID não encontrado.");
-        }
-      } catch (error) {
-        console.error("Error verificando usuário:", error);
-        setError("Error ao verificar o usuário.");
-      }
-    };
-
-    verifyAuth();
-  }, [id]);
-
-  useEffect(() => {
+    console.log("JUICE")
     const getUser = async (id) => {
       try {
         const res = await axios.get(`http://localhost:5100/getUser/${id}`);
@@ -55,20 +30,19 @@ const ProfilePage = ({ username, userID }) => {
     getUser(id);
   }, [id]);
 
-  console.log(user);
 
   return (
     <div className="profile-container">
       {error && <h1>{error}</h1>}
       <div className="profile-options">
         <SideMenu
-          username={user.firstName}
-          email={user.email}
-          accountType={user.Buyer}
-          userID={id === userID ? userID : false}
+          username={user ? user.firstName : ""}
+          email={user ? user.email : ""}
+          accountType={user ? user.Buyer : ""}
+          userID={user ? id === data.id ? data.id : false : ''}
           userAdress={""}
         />
-        <MainActivites username={user.firstName} />
+        <MainActivites username={user ? user.firstName : ''} />
       </div>
     </div>
   );

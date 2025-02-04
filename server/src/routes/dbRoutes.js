@@ -75,7 +75,12 @@ dbRoutes.post("/login", async (req, res) => {
         { expiresIn: "1h" }
       );
 
-      res.status(200).json({ message: "Logado com sucesso!", token });
+      res
+        .status(200)
+        .json({
+          message: "Logado com sucesso",
+          details: { token, username: result[0].firstName, id: result[0].id },
+        });
     });
   } catch (err) {
     res.status(500).json({ message: "Error" });
@@ -83,8 +88,9 @@ dbRoutes.post("/login", async (req, res) => {
 });
 
 dbRoutes.get("/getUser/:id", async (req, res) => {
+  console.log("teste")
   const sql = "SELECT firstName, email, typeUser FROM tbUser where id = ?";
-  const {id} = req.params;
+  const { id } = req.params;
 
   req.db.query(sql, [id], async (err, result) => {
     if (err) return res.status(500).json({ message: "Erro no servidor." });

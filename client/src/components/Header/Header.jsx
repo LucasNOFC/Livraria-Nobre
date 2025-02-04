@@ -4,17 +4,17 @@ import "./Header.css";
 import HeaderOptions from "../HeaderOptions/HeaderOptions";
 import UserLogged from "../UserLogged/UserLogged";
 
-const Header = ({token, username, userID }) => {
-  const [headerOptions, setHeaderOptions] = useState(false);
+const Header = ({ data }) => {
+  const [isHeaderMenuOptions, setIsHeaderMenuOptions] = useState(false);
 
-  const handleHeader = (headerOptions) => {
-    headerOptions ? setHeaderOptions(false) : setHeaderOptions(true);
+  const handleHeader = () => {
+    setIsHeaderMenuOptions(!isHeaderMenuOptions);
   };
 
   const location = useLocation();
 
   useEffect(() => {
-    setHeaderOptions(false);
+    setIsHeaderMenuOptions(false);
   }, [location]);
 
   return (
@@ -39,19 +39,19 @@ const Header = ({token, username, userID }) => {
             </li>
           </ol>
         </div>
-        {!token ? (
+        {data ? (
+          <div onClick={() => handleHeader(isHeaderMenuOptions)}>
+            <UserLogged username={data.username} userID={data.id} activeMenu={isHeaderMenuOptions} />
+          </div>
+        ) : (
           <div>
             <img
               src="../../public/images/user.svg"
               className="size-8 menu-header"
               alt="handle user"
-              onClick={() => handleHeader(headerOptions)}
+              onClick={() => handleHeader(isHeaderMenuOptions)}
             />
-            <HeaderOptions activeMenu={headerOptions} />
-          </div>
-        ) : (
-          <div>
-            <UserLogged username={username} userID={userID} />
+            <HeaderOptions activeMenu={isHeaderMenuOptions} />
           </div>
         )}
       </div>

@@ -32,8 +32,8 @@ const LoginFields = () => {
     try {
       const response = await api.post("/login", formData);
       setMessage(response.data.message);
-      const tokenAuth = response.data.token;
-      localStorage.setItem("authToken", tokenAuth);
+      const userData = response.data.details;
+      localStorage.setItem("user", JSON.stringify(userData));
       navigate("/", { replace: true });
       window.location.reload();
       setError("");

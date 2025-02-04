@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Header from "./components/Header/Header";
 import Landpage from "./pages/Landpage";
 import ExclusivePage from "./pages/ExclusivePage";
@@ -14,22 +14,19 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 function App() {
-  const [decodedToken, setDecodedToken] = useState(false);
+  const data = useMemo(() => {
+    const cachedData = localStorage.getItem("user");
+    
+    if (cachedData) return JSON.parse(cachedData);
+    return null;
+  }, [])
 
-  const token = localStorage.getItem("authToken");
-
-  useEffect(() => {
-    if (token) {
-      setDecodedToken(jwtDecode(token));
-    }
-  }, [token]);
+  console.log(data);
 
   return (
     <div className="main">
       <Header
-        token={token}
-        username={decodedToken.username}
-        userID={decodedToken.userID}
+        data={data}
       />
       <Routes>
         <Route path="/" element={<Landpage />} />
@@ -41,7 +38,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route
           path="/profile-page/:id"
-          element={<ProfilePage username={decodedToken.username} token={token} userID={decodedToken}/>}
+          element={<ProfilePage data={data} />}
         />
       </Routes>
       <Footer />
