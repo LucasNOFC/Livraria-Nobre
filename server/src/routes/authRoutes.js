@@ -6,8 +6,6 @@ authRoutes.post("/verify", async (req, res) => {
   const sql = "SELECT * from tbUser where id = ?";
   const { id } = req.body;
 
-  console.log(req.body);
-
   if (!id) {
     return res.status(400).json({ message: "ID não encontrado." });
   }

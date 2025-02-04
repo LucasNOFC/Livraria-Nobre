@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../api/api";
+import "./ProfilePage.css";
+import SideMenu from "./components/SideMenu/SideMenu";
+import MainActivites from "./components/MainActivites/MainActivites";
+import axios from "axios";
 
-const ProfilePage = ({ username }) => {
+const ProfilePage = ({ username, userID }) => {
   const { id } = useParams();
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(null);
   const [auth, setAuth] = useState(false);
   const [error, setError] = useState(null);
-  
 
   useEffect(() => {
-
     setAuth(false);
     setError(null);
-    
+
     if (!id) {
       setError("ID inválido.");
       return;
@@ -35,14 +39,37 @@ const ProfilePage = ({ username }) => {
     verifyAuth();
   }, [id]);
 
+  useEffect(() => {
+    const getUser = async (id) => {
+      try {
+        const res = await axios.get(`http://localhost:5100/getUser/${id}`);
+        setUser(res.data.user);
+      } catch (error) {
+        if (error.response) {
+          console.error("Erro:", error.response.data.message);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+    getUser(id);
+  }, [id]);
+
+  console.log(user);
+
   return (
-    <div>
+    <div className="profile-container">
       {error && <h1>{error}</h1>}
-      {auth ? (
-        <h1>{username}, sua página de perfil</h1>
-      ) : (
-        ''
-      )}
+      <div className="profile-options">
+        <SideMenu
+          username={user.firstName}
+          email={user.email}
+          accountType={user.Buyer}
+          userID={id === userID ? userID : false}
+          userAdress={""}
+        />
+        <MainActivites username={user.firstName} />
+      </div>
     </div>
   );
 };

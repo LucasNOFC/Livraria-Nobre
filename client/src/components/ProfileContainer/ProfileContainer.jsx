@@ -15,7 +15,7 @@ const ProfileContainer = ({ userID }) => {
   return (
     <ul className="un-list">
       <li>
-        <Link to={`/profile-page/${userID}`}>Editar perfil</Link>
+        <Link to={`/profile-page/${userID}`}>Ver perfil</Link>
       </li>
       <li>
         <button onClick={logout}>Deslogar</button>

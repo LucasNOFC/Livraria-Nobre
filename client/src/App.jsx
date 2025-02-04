@@ -15,18 +15,22 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 function App() {
   const [decodedToken, setDecodedToken] = useState(false);
-  
+
   const token = localStorage.getItem("authToken");
-  
+
   useEffect(() => {
     if (token) {
       setDecodedToken(jwtDecode(token));
     }
   }, [token]);
-  
+
   return (
     <div className="main">
-      <Header token={token} username={decodedToken.username} userID={decodedToken.userID} />
+      <Header
+        token={token}
+        username={decodedToken.username}
+        userID={decodedToken.userID}
+      />
       <Routes>
         <Route path="/" element={<Landpage />} />
         <Route path="/exclusive-products" element={<ExclusivePage />} />
@@ -35,11 +39,10 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        {token ? (
-          <Route path="/profile-page/:id" element={<ProfilePage username={decodedToken.username}/>} />
-        ) : (
-          ""
-        )}
+        <Route
+          path="/profile-page/:id"
+          element={<ProfilePage username={decodedToken.username} token={token} userID={decodedToken}/>}
+        />
       </Routes>
       <Footer />
     </div>

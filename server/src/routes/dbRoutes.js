@@ -1,7 +1,7 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 const { sign } = jwt;
-import { v4 as uuidv4} from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 
@@ -12,7 +12,7 @@ const dbRoutes = express.Router();
 dbRoutes.post("/register", async (req, res) => {
   const sql =
     "INSERT INTO tbUser (firstName, lastName, email, passCode,id, typeUser) VALUES (?, ?, ?, ?,?, 'Buyer')";
-  const { firstName, lastName, email, password} = req.body;
+  const { firstName, lastName, email, password } = req.body;
 
   if (!firstName || !lastName || !email || !password) {
     return res
@@ -80,6 +80,20 @@ dbRoutes.post("/login", async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: "Error" });
   }
+});
+
+dbRoutes.get("/getUser/:id", async (req, res) => {
+  const sql = "SELECT firstName, email, typeUser FROM tbUser where id = ?";
+  const {id} = req.params;
+
+  req.db.query(sql, [id], async (err, result) => {
+    if (err) return res.status(500).json({ message: "Erro no servidor." });
+
+    if (result.length === 0)
+      return res.status(404).json({ message: "Nenhum usuário encontrado." });
+
+    res.status(200).json({ message: "Usuário encontrado!", user: result[0] });
+  });
 });
 
 export { dbRoutes };
