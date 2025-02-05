@@ -88,7 +88,6 @@ dbRoutes.post("/login", async (req, res) => {
 });
 
 dbRoutes.get("/getUser/:id", async (req, res) => {
-  console.log("teste")
   const sql = "SELECT firstName, email, typeUser FROM tbUser where id = ?";
   const { id } = req.params;
 

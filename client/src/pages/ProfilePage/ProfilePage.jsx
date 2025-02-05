@@ -6,15 +6,11 @@ import SideMenu from "./components/SideMenu/SideMenu";
 import MainActivites from "./components/MainActivites/MainActivites";
 import axios from "axios";
 
-const ProfilePage = ( {data} ) => {
+const ProfilePage = ({ data }) => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(null);
-  const [auth, setAuth] = useState(false);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log("JUICE")
     const getUser = async (id) => {
       try {
         const res = await axios.get(`http://localhost:5100/getUser/${id}`);
@@ -23,26 +19,20 @@ const ProfilePage = ( {data} ) => {
         if (error.response) {
           console.error("Erro:", error.response.data.message);
         }
-      } finally {
-        setLoading(false);
       }
     };
     getUser(id);
   }, [id]);
 
-
   return (
     <div className="profile-container">
-      {error && <h1>{error}</h1>}
       <div className="profile-options">
         <SideMenu
           username={user ? user.firstName : ""}
-          email={user ? user.email : ""}
-          accountType={user ? user.Buyer : ""}
-          userID={user ? id === data.id ? data.id : false : ''}
-          userAdress={""}
+          typeUser={user ? user.typeUser : ""}
+          userID={user && data ? (id === data.id ? data.id : false) : ""}
         />
-        <MainActivites username={user ? user.firstName : ''} />
+        <MainActivites username={user ? user.firstName : ""} />
       </div>
     </div>
   );
