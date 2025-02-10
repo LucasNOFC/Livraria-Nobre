@@ -3,11 +3,41 @@ import jwt from "jsonwebtoken";
 const { sign } = jwt;
 import { v4 as uuidv4 } from "uuid";
 import bcrypt from "bcrypt";
+import multer from "multer";
 import dotenv from "dotenv";
 
 dotenv.config();
 
+const storage = multer.memoryStorage();
 const dbRoutes = express.Router();
+const upload = multer({ storage });
+
+dbRoutes.post(
+  "/register/profile-photo",
+  upload.single("profilePhoto"),
+  async (req, res) => {
+    const userID = req.body.userID;
+    const imageBuffer = req.file?.buffer;
+
+    if (!userID || !imageBuffer)
+      return res.status(400).json({ message: "Dados insuficientes" });
+
+    try {
+      const sql =
+        "INSERT INTO tbProfile (userId, profile_picture) values (? , ?) on DUPLICATE KEY UPDATE profile_picture = ?";
+      req.db.query(sql, [userID, imageBuffer, imageBuffer], (err, result) => {
+        if (err) {
+          console.error("Erro ao salvar foto de perfil.");
+          return res.status(500).json({ message: "Erro ao salvar." });
+        }
+        res.status(200).json({ message: "Foto de perfil salva!" });
+      });
+    } catch {
+      console.error("Erro.");
+      return res.status(500).json({ message: "Erro interno do servidor." });
+    }
+  }
+);
 
 dbRoutes.post("/register", async (req, res) => {
   const sql =
@@ -75,12 +105,10 @@ dbRoutes.post("/login", async (req, res) => {
         { expiresIn: "1h" }
       );
 
-      res
-        .status(200)
-        .json({
-          message: "Logado com sucesso",
-          details: { token, username: result[0].firstName, id: result[0].id },
-        });
+      res.status(200).json({
+        message: "Logado com sucesso",
+        details: { token, username: result[0].firstName, id: result[0].id },
+      });
     });
   } catch (err) {
     res.status(500).json({ message: "Error" });

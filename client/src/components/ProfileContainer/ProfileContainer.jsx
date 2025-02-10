@@ -8,8 +8,8 @@ const ProfileContainer = ({ userID }) => {
 
   const logout = () => {
     localStorage.removeItem("user");
-    window.location.reload();
     navigate("/", { replace: true });
+    window.location.reload();
   };
 
   return (

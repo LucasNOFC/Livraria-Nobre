@@ -9,6 +9,7 @@ import axios from "axios";
 const ProfilePage = ({ data }) => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
+  console.log(data);
 
   useEffect(() => {
     const getUser = async (id) => {
