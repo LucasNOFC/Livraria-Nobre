@@ -21,8 +21,6 @@ function App() {
     return null;
   }, []);
 
-  console.log(data);
-
   return (
     <div className="main">
       <Header data={data} />

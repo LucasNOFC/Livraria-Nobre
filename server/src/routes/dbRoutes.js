@@ -4,6 +4,7 @@ const { sign } = jwt;
 import { v4 as uuidv4 } from "uuid";
 import bcrypt from "bcrypt";
 import multer from "multer";
+import { Blob } from "buffer";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -11,6 +12,33 @@ dotenv.config();
 const storage = multer.memoryStorage();
 const dbRoutes = express.Router();
 const upload = multer({ storage });
+
+dbRoutes.get("/profile-photo/:userID", async (req, res) => {
+
+  const {userID} = req.params;
+
+  try {
+    const sql = "SELECT profile_picture from tbProfile where userID = ?";
+    req.db.query(sql, [userID], (err, result) => {
+      if (err) {
+        console.error("Erro ao buscar foto de perfil:", err);
+        return res.status(500).json({message: "Erro ao buscar foto."});
+      } 
+
+      if (result.length === 0 || !result[0].profile_picture) {
+        return res.status(404).json({message: "Nenhuma foto encontrada."});
+      }
+
+      const profilePictureBase64 = result[0].profile_picture.toString('base64');
+
+      console.log(result[0]);
+      res.status(200).json({ profile_picture: profilePictureBase64});
+    });
+  } catch (err) {
+    console.error("Erro ao buscar foto de perfil:", err);
+    return res.status(500).json({message:"Erro interno do servidor."})
+  }
+})
 
 dbRoutes.post(
   "/register/profile-photo",
@@ -27,7 +55,7 @@ dbRoutes.post(
         "INSERT INTO tbProfile (userId, profile_picture) values (? , ?) on DUPLICATE KEY UPDATE profile_picture = ?";
       req.db.query(sql, [userID, imageBuffer, imageBuffer], (err, result) => {
         if (err) {
-          console.error("Erro ao salvar foto de perfil.");
+          console.error("Erro ao salvar foto de perfil:", err);
           return res.status(500).json({ message: "Erro ao salvar." });
         }
         res.status(200).json({ message: "Foto de perfil salva!" });
