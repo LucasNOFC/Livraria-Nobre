@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ModalProfilePicture from "../ModalProfilePicture/ModalProfilePicture";
 import api from "../../../../api/api";
 
-const SideMenu = ({ username, userID, typeUser }) => {
+const SideMenu = ({ username, userID, typeUser, pageID }) => {
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [olderProfilePhoto, setOlderProfilePhoto] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -65,7 +65,7 @@ const SideMenu = ({ username, userID, typeUser }) => {
   };
 
   return (
-    <div className="side-menu">
+    <div className="side-menu-profile-page">
       <div className="side-menu-profile">
         <div className="profile-identification">
           <img
@@ -74,7 +74,7 @@ const SideMenu = ({ username, userID, typeUser }) => {
             }
             alt="profile picture"
             className="profile-picture"
-            onClick={() => setIsOpen(true)}
+            onClick={pageID === userID  ? () => setIsOpen(true) : ''}
             style={{ cursor: "pointer" }}
           />
           <p className="profile-username">{username}</p>

@@ -30,6 +30,7 @@ const ProfilePage = ({ data }) => {
         <SideMenu
           username={user ? user.firstName : ""}
           typeUser={user ? user.typeUser : ""}
+          pageID = {id}
           userID={user && data ? (id === data.id ? data.id : false) : ""}
         />
         <MainActivites username={user ? user.firstName : ""} />

@@ -12,7 +12,7 @@ const ModalProfilePicture = ({ handleFileChange, handleUpload, setIsOpen}) => {
             Enviar
           </button>
           <button onClick={() => setIsOpen(false)} className="close-modal">
-            Fechar
+           X
           </button>
         </div>
       </div>
