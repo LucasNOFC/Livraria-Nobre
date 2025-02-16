@@ -10,12 +10,12 @@ const SideMenu = ({ username, userID, typeUser, pageID }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (userID) {
+    if (pageID) {
       const getProfilePicture = async () => {
         try {
-          const res = await api.get(`/profile-photo/${userID}`);
-          if (res.status === 200 && res.data.profile_picture) {
-            const profilePic = `data:image/png;base64,${res.data.profile_picture}`;
+          const res = await api.get(`/profile-photo/${pageID}`);
+          if (res.status === 200 && res.data.data.profile_picture) {
+            const profilePic = `data:image/png;base64,${(res.data.data.profile_picture)}`;
             setProfilePhoto(profilePic);
             setOlderProfilePhoto(profilePic);
           } else {
@@ -28,7 +28,7 @@ const SideMenu = ({ username, userID, typeUser, pageID }) => {
 
       getProfilePicture();
     }
-  }, [userID]);
+  }, [pageID]);
 
   const handleFileChange = (e) => {
     setProfilePhoto(e.target.files[0]);

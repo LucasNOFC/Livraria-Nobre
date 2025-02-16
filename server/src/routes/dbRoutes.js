@@ -18,7 +18,7 @@ dbRoutes.get("/profile-photo/:userID", async (req, res) => {
   const {userID} = req.params;
 
   try {
-    const sql = "SELECT profile_picture from tbProfile where userID = ?";
+    const sql = "SELECT * from tbProfile where userID = ?";
     req.db.query(sql, [userID], (err, result) => {
       if (err) {
         console.error("Erro ao buscar foto de perfil:", err);
@@ -31,8 +31,7 @@ dbRoutes.get("/profile-photo/:userID", async (req, res) => {
 
       const profilePictureBase64 = result[0].profile_picture.toString('base64');
 
-      console.log(result[0]);
-      res.status(200).json({ profile_picture: profilePictureBase64});
+      res.status(200).json({ data: {profile_picture: profilePictureBase64, preferences: result[0].preferences} });
     });
   } catch (err) {
     console.error("Erro ao buscar foto de perfil:", err);

@@ -9,6 +9,7 @@ import axios from "axios";
 const ProfilePage = ({ data }) => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
+
   
   useEffect(() => {
     const getUser = async (id) => {
@@ -32,6 +33,7 @@ const ProfilePage = ({ data }) => {
           typeUser={user ? user.typeUser : ""}
           pageID = {id}
           userID={user && data ? (id === data.id ? data.id : false) : ""}
+
         />
         <MainActivites username={user ? user.firstName : ""} />
       </div>

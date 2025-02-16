@@ -19,7 +19,7 @@ const Header = ({ data }) => {
 
   return (
     <div className="inline-flex bg-black w-full">
-      <div className="flex items-center w-full md:justify-between justify-center gap-3 p-3.5 text-white shadow shadow-black">
+      <div className="flex items-center w-full md:justify-between justify-center gap-3 p-3.5 text-white shadow">
         <h1 className="text-white hover:text-gray-400">
           <Link to={"/"}>LIVRARIA NOBRE</Link>
         </h1>
